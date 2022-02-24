@@ -1,30 +1,37 @@
 const { Schema, model } = require("mongoose");
 
-const saveFileSchema = new Schema({
-  name: {
-    type: String,
-    required: [true, "Save File must have a name!"],
-    trim: true,
+const saveFileSchema = new Schema(
+  {
+    name: {
+      type: String,
+      required: [true, "Save File must have a name!"],
+      trim: true,
+    },
+    worlds: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "World",
+      },
+    ],
+    households: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Household",
+      },
+    ],
+    challenges: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Challenge",
+      },
+    ],
   },
-  worlds: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "World",
+  {
+    toJSON: {
+      getters: true,
     },
-  ],
-  households: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Household",
-    },
-  ],
-  challenges: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Challenge",
-    },
-  ],
-});
+  }
+);
 
 // create model from schema
 const SaveFile = model("SaveFile", saveFileSchema);
