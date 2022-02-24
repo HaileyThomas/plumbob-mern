@@ -5,19 +5,19 @@ const userSchema = new Schema(
   {
     username: {
       type: String,
-      required: true,
+      required: [true, "User must have a username!"],
       unique: true,
       trim: true,
     },
     email: {
       type: String,
-      required: true,
+      required: [true, "User must have an email address!"],
       unique: true,
       match: [/.+@.+\..+/, "Must match an email address!"],
     },
     password: {
       type: String,
-      required: true,
+      required: [true, "User must enter a password!"],
       minlength: 5,
     },
     packs: [String],
@@ -46,5 +46,8 @@ userSchema.virtual("saveFileCount").get(function () {
 userSchema.virtual("packCount").get(function () {
   return this.packs.length;
 });
+
+// create model from schema
+const User = model("User", userSchema);
 
 module.exports = User;
