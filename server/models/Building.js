@@ -7,6 +7,10 @@ const buildingSchema = new Schema(
       required: [true, "Building name is required!"],
       trim: true,
     },
+    type: {
+      type: String,
+      trim: true,
+    },
   },
   {
     toJSON: {
