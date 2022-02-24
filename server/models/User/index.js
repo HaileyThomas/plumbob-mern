@@ -1,6 +1,7 @@
 const { Schema, model } = require("mongoose");
 const { hash, compare } = require("bcrypt");
 
+// TODO input pack enum
 const userSchema = new Schema(
   {
     username: {
@@ -20,11 +21,7 @@ const userSchema = new Schema(
       required: true,
       minlength: 5,
     },
-    packs: {
-      type: String,
-      enum: ["", ""],
-      trim: true,
-    },
+    packs: [String],
     saveFiles: [
       {
         type: Schema.Types.ObjectId,
@@ -39,6 +36,16 @@ const userSchema = new Schema(
   }
 );
 // compare incoming password to hashed password
+userSchema.methods.isCorrectPassword = async function (password) {
+  return compare(password, this.password);
+};
 // virtual for retrieving number of user's save files
-// virtual for retrieving number of user's packs
+userSchema.virtual("saveFileCount").get(function () {
+  return this.saveFile.length;
+});
+// TODO virtual for retrieving number of user's packs
+userSchema.virtual("packCount").get(function () {
+  return this.packs.length;
+});
+
 module.exports = User;
