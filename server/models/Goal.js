@@ -15,6 +15,10 @@ const goalSchema = new Schema(
       type: Number,
       trim: true,
     },
+    sim: {
+      type: Schema.Types.ObjectId,
+      ref: "Sim",
+    },
   },
   {
     toJSON: {
