@@ -7,6 +7,10 @@ const worldSchema = new Schema(
       required: [true, "The name of the world is required!"],
       trim: true,
     },
+    image: {
+      type: String,
+      trim: true,
+    },
     lots: [
       {
         type: Schema.Types.ObjectId,
