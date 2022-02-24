@@ -1,7 +1,6 @@
 const { Schema, model } = require("mongoose");
 const { hash, compare } = require("bcrypt");
 
-// TODO input pack enum
 const userSchema = new Schema(
   {
     username: {
@@ -43,7 +42,7 @@ userSchema.methods.isCorrectPassword = async function (password) {
 userSchema.virtual("saveFileCount").get(function () {
   return this.saveFile.length;
 });
-// TODO virtual for retrieving number of user's packs
+// virtual for retrieving number of user's packs
 userSchema.virtual("packCount").get(function () {
   return this.packs.length;
 });
