@@ -1,6 +1,7 @@
 const { Schema, model } = require("mongoose");
 const { hash, compare } = require("bcrypt");
 
+// TODO double check packs string
 const userSchema = new Schema(
   {
     username: {
