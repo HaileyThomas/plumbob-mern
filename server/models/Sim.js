@@ -23,16 +23,21 @@ const simSchema = new Schema(
       enum: ["OCCULT TYPES HERE"],
       default: "human",
     },
-    relationships: [
+    relationship: {
+      type: String,
+      enum: ["SINGLE", "TAKEN", "MARRIED"],
+      default: "SINGLE",
+    },
+    aspirations: [
       {
         type: Schema.Types.ObjectId,
-        ref: "Relationship",
+        ref: "Aspiration",
       },
     ],
-    achievements: [
+    skills: [
       {
         type: Schema.Types.ObjectId,
-        ref: "Achievement",
+        ref: "Skill",
       },
     ],
     status: {

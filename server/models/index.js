@@ -7,6 +7,7 @@ const Lot = require("./Lot");
 const Building = require("./Building");
 const Household = require("./Household");
 const Sim = require("./Sim");
+const Aspiration = require("./Aspirations");
 
 module.exports = {
   User,
@@ -18,4 +19,5 @@ module.exports = {
   Building,
   Household,
   Sim,
+  Aspiration,
 };
